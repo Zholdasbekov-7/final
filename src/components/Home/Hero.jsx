@@ -12,10 +12,10 @@ export const Hero = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [search])
     useEffect(() => {
-        dispatch(getCountries());
+        (!global.countries || global.countries.length < 1) && dispatch(getCountries());
     }, []);
     return (
-        <div class="input-group mb-3">
+        <div class="input-group mb-3 w-50">
             <input 
                 type="search" 
                 class="form-control" 

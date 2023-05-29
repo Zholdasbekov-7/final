@@ -13,18 +13,10 @@ export const List = () => {
         {global.status === "loading" && <Loader />}
         {global.status === "failed" && <div>Something went wrong, please try again</div>}
         {global.status === "idle" && global.countries && global.countries.length > 0 && (
-            <Stack direction="horizontal" className="justify-content-between" style={{ flexWrap: "wrap" }} gap={3}>
+            <Stack direction="horizontal" className="justify-content-start" style={{ flexWrap: "wrap" }} gap={2}>
                 {global.countries.map((country, index) => (
-                    <Link key={index} to="/country" onClick={() => dispatch(setCountry(country))}>
-                        <Card border="primary" style={{ width: '18rem' }}>
-                            <Card.Header>{index + 1}. {country.region}</Card.Header>
-                            <Card.Body>
-                            <Card.Title>{country.name}</Card.Title>
-                            <Card.Text>
-                                Population: {country.population.toLocaleString('ru-RU')}M
-                            </Card.Text>
-                            </Card.Body>
-                        </Card>
+                    <Link key={index} to="/country" className="border p-1" onClick={() => dispatch(setCountry(country))}>
+                        {country.name}
                     </Link>
                 ))}
             </Stack>
